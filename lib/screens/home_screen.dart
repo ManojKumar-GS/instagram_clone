@@ -59,11 +59,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 scrollDirection: Axis.horizontal,
                 itemCount: user.length,
                 itemBuilder: (context, index) {
-                  return CommonWidget.instance.getStories(
-                      isUser: user[index].isUser,
-                      name: user[index].name ?? "",
-                      imageName: user[index].image ?? "assets/image-1.jpg",
-                      isStory: true);
+                  return GetStories(
+                    isUser: user[index].isUser,
+                    name: user[index].name ?? "",
+                    imageName: user[index].image ?? "assets/image-1.jpg",
+                    isStory: true,
+                  );
                 },
               ),
             ),
@@ -71,29 +72,44 @@ class _HomeScreenState extends State<HomeScreen> {
           SliverList(
               delegate: SliverChildBuilderDelegate(childCount: user.length,
                   (context, index) {
-            return CommonWidget.instance.getPost(
-                name: user[index].name ?? "",
-                image: user[index].image ?? "assets/image-1.jpg",
-                song: user[index].song ?? "",
-                location: user[index].location ?? "");
+            return GetPost(
+              name: user[index].name ?? "",
+              image: user[index].image ?? "assets/image-1.jpg",
+              song: user[index].song ?? "",
+              location: user[index].location ?? "",
+            );
           }))
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         iconSize: 32,
-        items: const [
+        items: [
           BottomNavigationBarItem(
-              icon: Icon(Icons.home_filled, color: Colors.black), label: ""),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.search_outlined, color: Colors.black),
+              icon: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(Icons.home_filled, color: Colors.black)),
               label: ""),
           BottomNavigationBarItem(
-              icon: Icon(Icons.add_box, color: Colors.black), label: ""),
+              icon: IconButton(
+                  icon: const Icon(Icons.search_outlined, color: Colors.black),
+                  onPressed: () {}),
+              label: ""),
           BottomNavigationBarItem(
-              icon: Icon(Icons.movie_outlined, color: Colors.black), label: ""),
+              icon: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(Icons.add_box, color: Colors.black)),
+              label: ""),
           BottomNavigationBarItem(
-              icon: Icon(Icons.circle, color: Colors.black), label: ""),
+              icon: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(Icons.movie_outlined, color: Colors.black)),
+              label: ""),
+          BottomNavigationBarItem(
+              icon: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(Icons.circle, color: Colors.black)),
+              label: ""),
         ],
       ),
     );
