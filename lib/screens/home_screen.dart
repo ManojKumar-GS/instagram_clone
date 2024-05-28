@@ -1,8 +1,10 @@
-import 'package:androidstudio_project/utils/common_widget.dart';
 import 'package:androidstudio_project/data/users_data.dart';
 import 'package:androidstudio_project/model/user_model.dart';
+import 'package:androidstudio_project/utils/common_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'message_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -47,6 +49,10 @@ class _HomeScreenState extends State<HomeScreen> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: GestureDetector(
+                  onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => MessageScreen(user: user))),
                   child: Image.asset("assets/message_icon.png", width: 20),
                 ),
               )
