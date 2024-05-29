@@ -41,7 +41,58 @@ class _GetPostState extends State<GetPost> {
             ],
           ),
           const Spacer(),
-          IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert))
+          IconButton(
+              onPressed: () {
+                showModalBottomSheet<void>(
+                  enableDrag: true,
+                  isScrollControlled: true,
+                  context: context,
+                  builder: (BuildContext context) {
+                    return SizedBox(
+                      height: 400,
+                      child: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                circularIcon(
+                                    name: "save",
+                                    icon: Icons.bookmark_border,
+                                    onTap: () {}),
+                                circularIcon(
+                                    name: "QR code",
+                                    icon: Icons.qr_code_scanner_outlined,
+                                    onTap: () {}),
+                              ],
+                            ),
+                            const Divider(),
+                            iconText(
+                                icon: Icons.star, text: "Add to favorites"),
+                            iconText(
+                                icon: Icons.person_remove_outlined,
+                                text: "Unfollow"),
+                            const Divider(),
+                            iconText(
+                                icon: Icons.closed_caption,
+                                text: "Manage captions"),
+                            iconText(
+                                icon: Icons.info_outline,
+                                text: "Why you're seeing this post"),
+                            iconText(icon: Icons.hide_source, text: "Hide"),
+                            iconText(
+                                icon: Icons.person_outline,
+                                text: "About this account"),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                );
+              },
+              icon: const Icon(Icons.more_vert))
         ]),
         GestureDetector(
             onDoubleTap: () {
@@ -67,7 +118,58 @@ class _GetPostState extends State<GetPost> {
                       )
                     : const Icon(CupertinoIcons.heart)),
             IconButton(
-                onPressed: () {}, icon: const Icon(Icons.messenger_outline)),
+                onPressed: () {
+                  showModalBottomSheet<void>(
+                    useSafeArea: true,
+                    isScrollControlled: true,
+                    context: context,
+                    builder: (BuildContext context) {
+                      return SingleChildScrollView(
+                        scrollDirection: Axis.vertical,
+                        child: Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              const Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: Text("Comments",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w900,
+                                        fontSize: 20)),
+                              ),
+                              ListView.builder(
+                                scrollDirection: Axis.vertical,
+                                shrinkWrap: true,
+                                itemCount: 20,
+                                itemBuilder: (context, index) {
+                                  return ListTile(
+                                    title: const Text("UserName",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w900)),
+                                    leading: CircleAvatar(
+                                        radius: 30,
+                                        child: ClipOval(
+                                          child: Image.asset(
+                                              height: 60,
+                                              width: 60,
+                                              fit: BoxFit.fill,
+                                              "assets/images-2.jpg"),
+                                        )),
+                                    subtitle: const Text("Comments here"),
+                                    trailing: IconButton(
+                                        onPressed: () {},
+                                        icon: const Icon(CupertinoIcons.heart)),
+                                  );
+                                },
+                              )
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                },
+                icon: const Icon(Icons.messenger_outline)),
             IconButton(
                 onPressed: () {}, icon: const Icon(CupertinoIcons.rocket)),
             const Spacer(),
@@ -112,6 +214,33 @@ class _GetPostState extends State<GetPost> {
             style: TextStyle(fontWeight: FontWeight.w300),
           ),
         ),
+      ],
+    );
+  }
+
+  Widget iconText({required IconData icon, required String text}) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        children: [Icon(icon), const SizedBox(width: 20), Text(text)],
+      ),
+    );
+  }
+
+  Widget circularIcon(
+      {required String name, required IconData icon, required Function onTap}) {
+    return Column(
+      children: [
+        Container(
+          height: 50,
+          width: 50,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
+              color: Colors.transparent,
+              border: Border.all(color: Colors.black)),
+          child: IconButton(onPressed: () => onTap, icon: Icon(icon)),
+        ),
+        Text(name)
       ],
     );
   }
