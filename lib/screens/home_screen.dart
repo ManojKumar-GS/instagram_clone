@@ -87,37 +87,6 @@ class _HomeScreenState extends State<HomeScreen> {
           }))
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        iconSize: 32,
-        items: [
-          BottomNavigationBarItem(
-              icon: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.home_filled, color: Colors.black)),
-              label: ""),
-          BottomNavigationBarItem(
-              icon: IconButton(
-                  icon: const Icon(Icons.search_outlined, color: Colors.black),
-                  onPressed: () {}),
-              label: ""),
-          BottomNavigationBarItem(
-              icon: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.add_box, color: Colors.black)),
-              label: ""),
-          BottomNavigationBarItem(
-              icon: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.movie_outlined, color: Colors.black)),
-              label: ""),
-          BottomNavigationBarItem(
-              icon: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.circle, color: Colors.black)),
-              label: ""),
-        ],
-      ),
     );
   }
 }
