@@ -84,7 +84,30 @@ class _HomeScreenState extends State<HomeScreen> {
               song: user[index].song ?? "",
               location: user[index].location ?? "",
             );
-          }))
+          })),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.all(18.0),
+              child: Column(
+                children: [
+                  const Text("You're Caught Up!",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 28)),
+                  Container(
+                    height: 80,
+                    width: 80,
+                    decoration: BoxDecoration(
+                        border: Border.all(),
+                        borderRadius: BorderRadius.circular(50)),
+                    child: const Icon(
+                      CupertinoIcons.exclamationmark_triangle,
+                      size: 50,
+                    ),
+                  )
+                ],
+              ),
+            ),
+          )
         ],
       ),
     );

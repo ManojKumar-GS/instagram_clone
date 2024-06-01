@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class ExploreScreen extends StatefulWidget {
@@ -44,7 +46,15 @@ class _ExploreScreenState extends State<ExploreScreen> {
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   mainAxisSpacing: 2, crossAxisSpacing: 2, crossAxisCount: 3),
               itemBuilder: (context, index) {
-                return Container(height: 40, width: 40, color: Colors.black);
+                var random = Random();
+                int randomNumber = random.nextInt(6) + 1;
+                return GestureDetector(
+                  onTap: () {},
+                  child: Image.asset(
+                    "assets/image-$randomNumber.jpg",
+                    fit: BoxFit.fill,
+                  ),
+                );
               },
             ),
           ),

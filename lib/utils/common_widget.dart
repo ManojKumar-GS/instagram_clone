@@ -60,8 +60,14 @@ class _GetPostState extends State<GetPost> {
                               children: [
                                 circularIcon(
                                     name: "save",
-                                    icon: Icons.bookmark_border,
-                                    onTap: () {}),
+                                    icon: isSaved
+                                        ? Icons.bookmark
+                                        : Icons.bookmark_border,
+                                    onTap: () {
+                                      setState(() {
+                                        isSaved = !isSaved;
+                                      });
+                                    }),
                                 circularIcon(
                                     name: "QR code",
                                     icon: Icons.qr_code_scanner_outlined,
