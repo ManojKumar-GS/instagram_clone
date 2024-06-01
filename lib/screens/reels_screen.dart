@@ -10,9 +10,14 @@ class ReelsScreen extends StatefulWidget {
 class _ReelsScreenState extends State<ReelsScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text("Reels screen"),
+    return Scaffold(
+      body: Stack(
+        children: [
+          Image.asset(
+            "assets/image-1.jpg",
+            fit: BoxFit.contain,
+          )
+        ],
       ),
     );
   }
