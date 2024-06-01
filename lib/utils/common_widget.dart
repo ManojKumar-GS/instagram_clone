@@ -153,7 +153,7 @@ class _GetPostState extends State<GetPost> {
                                               height: 60,
                                               width: 60,
                                               fit: BoxFit.fill,
-                                              "assets/images-2.jpg"),
+                                              "assets/image-4.jpg"),
                                         )),
                                     subtitle: const Text("Comments here"),
                                     trailing: IconButton(
@@ -208,9 +208,16 @@ class _GetPostState extends State<GetPost> {
           ),
         ),
         const Padding(
-          padding: EdgeInsets.only(left: 8.0, bottom: 10),
+          padding: EdgeInsets.only(left: 8.0),
           child: Text(
             "view all 700 comments",
+            style: TextStyle(fontWeight: FontWeight.w300),
+          ),
+        ),
+        const Padding(
+          padding: EdgeInsets.only(left: 8.0),
+          child: Text(
+            "may 10 2024",
             style: TextStyle(fontWeight: FontWeight.w300),
           ),
         ),
@@ -280,7 +287,7 @@ class _GetStoriesState extends State<GetStories> {
                   child: Image.asset(
                       width: widget.isUser ?? false ? 100 : 90,
                       height: widget.isUser ?? false ? 100 : 90,
-                      widget.imageName ?? "assets/",
+                      widget.imageName ?? "assets/image-5.jpg",
                       fit: BoxFit.fill)),
               widget.isUser ?? false
                   ? Align(
