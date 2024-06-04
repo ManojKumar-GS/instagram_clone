@@ -46,7 +46,6 @@ class _BasePageState extends State<BasePage> {
       body: _widgetOptions[currentBottomNavIndex],
       bottomNavigationBar: NavigationBar(
         selectedIndex: currentBottomNavIndex,
-        elevation: 0,
         indicatorColor: Colors.transparent,
         onDestinationSelected: (int index) {
           setState(() {
@@ -55,7 +54,7 @@ class _BasePageState extends State<BasePage> {
         },
         destinations: const [
           NavigationDestination(
-              icon: Icon(CupertinoIcons.home, color: Colors.black, size: 30),
+              icon: Icon(Icons.home_outlined, color: Colors.black, size: 30),
               selectedIcon:
                   Icon(Icons.home_filled, color: Colors.black, size: 30),
               label: ""),

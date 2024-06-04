@@ -130,47 +130,58 @@ class _GetPostState extends State<GetPost> {
                     isScrollControlled: true,
                     context: context,
                     builder: (BuildContext context) {
-                      return SingleChildScrollView(
-                        scrollDirection: Axis.vertical,
-                        child: Center(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
+                      return DraggableScrollableSheet(
+                        initialChildSize: 0.8,
+                        maxChildSize: 1,
+                        expand: false,
+                        builder: (context, scrollController) {
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
                               const Padding(
                                 padding: EdgeInsets.all(8.0),
-                                child: Text("Comments",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w900,
-                                        fontSize: 20)),
+                                child: Text(
+                                  "Comments",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: 20,
+                                  ),
+                                ),
                               ),
-                              ListView.builder(
-                                scrollDirection: Axis.vertical,
-                                shrinkWrap: true,
-                                itemCount: 20,
-                                itemBuilder: (context, index) {
-                                  return ListTile(
-                                    title: const Text("UserName",
+                              Expanded(
+                                child: ListView.builder(
+                                  controller: scrollController,
+                                  itemCount: 20,
+                                  itemBuilder: (context, index) {
+                                    return ListTile(
+                                      title: const Text(
+                                        "UserName",
                                         style: TextStyle(
-                                            fontWeight: FontWeight.w900)),
-                                    leading: CircleAvatar(
+                                            fontWeight: FontWeight.w900),
+                                      ),
+                                      leading: CircleAvatar(
                                         radius: 30,
                                         child: ClipOval(
                                           child: Image.asset(
-                                              height: 60,
-                                              width: 60,
-                                              fit: BoxFit.fill,
-                                              "assets/image-4.jpg"),
-                                        )),
-                                    subtitle: const Text("Comments here"),
-                                    trailing: IconButton(
+                                            height: 60,
+                                            width: 60,
+                                            fit: BoxFit.fill,
+                                            "assets/image-4.jpg",
+                                          ),
+                                        ),
+                                      ),
+                                      subtitle: const Text("Comments here"),
+                                      trailing: IconButton(
                                         onPressed: () {},
-                                        icon: const Icon(CupertinoIcons.heart)),
-                                  );
-                                },
-                              )
+                                        icon: const Icon(CupertinoIcons.heart),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
                             ],
-                          ),
-                        ),
+                          );
+                        },
                       );
                     },
                   );
@@ -283,31 +294,39 @@ class _GetStoriesState extends State<GetStories> {
       padding: const EdgeInsets.all(8.0),
       child: Column(
         children: [
-          CircleAvatar(
-            backgroundColor: widget.isUser ?? false
-                ? Colors.transparent
-                : Colors.purpleAccent,
-            radius: widget.isStory ?? false ? 50 : 20,
-            child: Stack(children: [
-              ClipOval(
-                  child: Image.asset(
-                      width: widget.isUser ?? false ? 100 : 90,
-                      height: widget.isUser ?? false ? 100 : 90,
-                      widget.imageName ?? "assets/image-5.jpg",
-                      fit: BoxFit.fill)),
-              widget.isUser ?? false
-                  ? Align(
-                      alignment: Alignment.bottomRight,
-                      child: IconButton(
-                          onPressed: () {},
-                          icon: const Icon(
-                            size: 30,
-                            Icons.add_circle,
-                            color: Colors.white,
-                          )),
-                    )
-                  : const SizedBox()
-            ]),
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
+              gradient: const LinearGradient(end: Alignment.topCenter, colors: [
+                Colors.yellow,
+                Colors.redAccent,
+                Colors.deepPurpleAccent
+              ]),
+            ),
+            child: CircleAvatar(
+              backgroundColor: Colors.transparent,
+              radius: widget.isStory ?? false ? 50 : 20,
+              child: Stack(children: [
+                ClipOval(
+                    child: Image.asset(
+                        width: widget.isUser ?? false ? 100 : 90,
+                        height: widget.isUser ?? false ? 100 : 90,
+                        widget.imageName ?? "assets/image-5.jpg",
+                        fit: BoxFit.fill)),
+                widget.isUser ?? false
+                    ? Align(
+                        alignment: Alignment.bottomRight,
+                        child: IconButton(
+                            onPressed: () {},
+                            icon: const Icon(
+                              size: 30,
+                              Icons.add_circle,
+                              color: Colors.white,
+                            )),
+                      )
+                    : const SizedBox()
+              ]),
+            ),
           ),
           widget.isStory ?? false ? Text(widget.name ?? "") : const SizedBox()
         ],
