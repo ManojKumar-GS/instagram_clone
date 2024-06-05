@@ -1,5 +1,6 @@
 import 'package:androidstudio_project/data/users_data.dart';
 import 'package:androidstudio_project/model/user_model.dart';
+import 'package:androidstudio_project/screens/camera_screen.dart';
 import 'package:androidstudio_project/utils/common_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -29,14 +30,13 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: GestureDetector(
         onPanUpdate: (details) {
-          // Swiping in right direction.
           if (details.delta.dx < 0) {
             Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => MessageScreen(user: user)));
+          } else if (details.delta.dx > 0) {
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const CameraScreen()));
           }
-
-          // Swiping in left direction.
-          if (details.delta.dx < 0) {}
         },
         child: CustomScrollView(
           slivers: [

@@ -1,6 +1,5 @@
 import 'package:androidstudio_project/utils/common_widget.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class ReelsScreen extends StatefulWidget {

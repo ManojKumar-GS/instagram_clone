@@ -4,7 +4,6 @@ import 'package:androidstudio_project/screens/home_screen.dart';
 import 'package:androidstudio_project/screens/profile_screen.dart';
 import 'package:androidstudio_project/screens/reels_screen.dart';
 import 'package:androidstudio_project/screens/upload_screen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'explore_screen.dart';
