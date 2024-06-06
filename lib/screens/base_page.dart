@@ -1,9 +1,9 @@
 import 'package:androidstudio_project/data/users_data.dart';
 import 'package:androidstudio_project/model/user_model.dart';
+import 'package:androidstudio_project/screens/camera_screen.dart';
 import 'package:androidstudio_project/screens/home_screen.dart';
 import 'package:androidstudio_project/screens/profile_screen.dart';
 import 'package:androidstudio_project/screens/reels_screen.dart';
-import 'package:androidstudio_project/screens/upload_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'explore_screen.dart';
@@ -22,7 +22,7 @@ class _BasePageState extends State<BasePage> {
   final List<Widget> _widgetOptions = <Widget>[
     const HomeScreen(),
     const ExploreScreen(),
-    const UploadScreen(),
+    const CameraScreen(),
     const ReelsScreen(),
     const ProfileScreen()
   ];
